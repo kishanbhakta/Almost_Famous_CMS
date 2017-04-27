@@ -1,0 +1,32 @@
+{
+  "name": "Almost_Famous_CMS",
+  "version": "1.0.0",
+  "homepage": "",
+  "authors": [
+    "Kishan Bhakta",
+    "Mike Zevitas"
+  ],
+  "description": "A CMS for Almost_Famous website",
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "underscore": "~1.8.3",
+    "normalize.css": "~3.0.3",
+    "handlebars": "~3.0.3",
+    "angular": "^1.6.4",
+    "angular-ui-router": "^0.4.2",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0"
+  },
+  "devDependencies": {
+    "mocha": "~2.2.5",
+    "chai": "~3.0.0"
+  }
+}
