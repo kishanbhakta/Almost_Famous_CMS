@@ -38,7 +38,7 @@
           controller: 'PhotosCtrl'
         })
         .state('editevent', {
-          url: '/editevent',
+          url: '/editevent/{id}',
           templateUrl:'views/edit_events_tpl.html',
           controller: 'EventsCtrl'
         })

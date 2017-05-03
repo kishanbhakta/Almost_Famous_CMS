@@ -3,13 +3,15 @@
 
   angular.module('almostFamousCMS')
 
-  .controller('EventsCtrl', ['$scope', '$http', '$state', 'EventsService', 'SERVER',
-   function($scope, $http, $state, EventsService, SERVER) {
+  .controller('EventsCtrl', ['$scope', '$http', '$state', 'EventsService', 'SERVER', '$stateParams', '$window',
+   function($scope, $http, $state, EventsService, SERVER, $stateParams, $window) {
 
      var vm = this;
+     var id = $stateParams.id;
 
 //Post EVENTS
-      $scope.postEvent = function (options) {
+      $scope.postEvent = function (options)
+      {
         EventsService.postEvent(options);
         console.log('Posted to /events and got back:', options);
       };
@@ -18,26 +20,52 @@
 
 //Get EVENTS
       vm.state = {event:[]};
-      vm.getEvent = function (res) {
-       EventsService.getEvent(res).then(function(res){
+      vm.getEvent = function (res)
+      {
+       EventsService.getEvent(res).then(function(res)
+       {
        $scope.event = res.data;
-       console.log('These are events from DB:' + res.options);
+      //  console.log('These are events from DB:' + res.options);
         });
       };
       vm.getEvent({res:''});
 
+//Get a single _ID
+
+      $scope.getSingleId = function(id)
+      {
+        EventsService.getSingleId(id).then(function(data)
+        {
+          $scope.option = data;
+        });
+      };
+
 //Put EVENTS
-      // vm.state = {event:[]};
-      // vm.putEvent = function (res) {
-      //  EventsService.get_ID(eventID).then(function(eventID){
-      //  EventsService.putEvent(eventID).finally(function(res){
-      //    $scope.events = res.data;
-      //    console.log('This event has been edited' + res.data);
-      //    });
-      //
-      //    });
-      //  };
-      // vm.putEvent({res:''});
+      $scope.editEvent = function(option)
+      {
+        EventsService.editEvent(option);
+      };
+
+
+//Delete Event
+      $scope.deleteEvent = function(id)
+      {
+        var ckDelete = $window.confirm('Are you sure you want to delete this event?');
+        if(ckDelete)
+        {
+          EventsService.deleteEvent(id);
+        }
+      };
+
+
+
+
+//============================================================
+//            /\
+//           /||\
+//            ||
+//            ||
+//Everything goes above here ==================================
    }
   ]);
 }());

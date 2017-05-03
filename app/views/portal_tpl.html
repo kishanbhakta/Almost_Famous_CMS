@@ -1,7 +1,8 @@
 <div ng-controller="EventsCtrl">
-  <div ng-repeat="option in event">
+  <div ng-repeat="option in event" id="{{option._id.$oid}}">
   {{option.venue}}
-  <a href="#">Edit</a>
-  <a href="#">Delete</a>
+  {{option._id.$oid}}
+  <a ui-sref="editevent({id:option._id.$oid})">Edit</a>
+  <a ng-click="deleteEvent(option._id.$oid)">Delete</a>
   </div>
 </div>
