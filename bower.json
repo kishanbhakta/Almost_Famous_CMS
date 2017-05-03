@@ -23,7 +23,8 @@
     "angular": "^1.6.4",
     "angular-ui-router": "^0.4.2",
     "bootstrap": "^3.3.7",
-    "font-awesome": "fontawesome#^4.7.0"
+    "font-awesome": "fontawesome#^4.7.0",
+    "angular-material": "^1.1.4"
   },
   "devDependencies": {
     "mocha": "~2.2.5",
