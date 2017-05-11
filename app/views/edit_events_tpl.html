@@ -1,6 +1,6 @@
 <div ng-controller="EventsCtrl">
   <div class="container">
-  <form ng-submit="editEvent(options)">
+  <form ng-submit="editEvent(option._id.$oid)">
     <div class="form-group row">
       <label for="eventdate" class="col-sm-2 col-form-label">Event Date</label>
       <div class="col-sm-10">

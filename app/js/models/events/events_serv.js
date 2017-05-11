@@ -4,11 +4,12 @@
 
   angular.module('almostFamousCMS')
 
-  .service('EventsService', ['SERVER', '$http', '$state',
-    function (SERVER, $http, $state) {
+  .service('EventsService', ['SERVER', '$http', '$state', '$stateParams',
+    function (SERVER, $http, $state, $stateParams) {
 
       var endpoint = SERVER.URL;
       var Config = {params: {apiKey: SERVER.CONFIG.apiKey}};
+
 
 //Event Constructor
       var Event = function (options) {
@@ -40,30 +41,27 @@
         return $http.get(endpoint + '/events', Config);
       };
 
-//Get a single _ID...This is to attach to $stateParams
 
-      this.getSingleId = function(id)
-      {
-        return $http.get(endpoint + '/events/' + id, Config);
-        console.log(endpoint + '/events/' + id, Config);
-      };
 
 //Put Event
-      this.editEvent = function(option)
+      this.editEvent = function(eid)
       {
-        // var uid = _id.$oid;
-        return $http.put(endpoint + '/events/' + uid, Config).then(function()
+        console.log('This is the id:', eid);
+        return $http.put(endpoint + '/events/' + eid, Config).then(function(res)
         {
-
-          $state.go('home');
-
+          if(res)
+          {
+            res.msg = "PUT Data Method Executed Successfully!";
+          }
         });
       };
 
+
+
 //Delete Event
-      this.deleteEvent = function(id)
+      this.deleteEvent = function(eid)
       {
-        return $http.delete(endpoint + '/events/' + id, Config).then(function()
+        return $http.delete(endpoint + '/events/' + eid, Config).then(function()
         {
 
           $state.go('home');

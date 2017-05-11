@@ -7,13 +7,17 @@
    function($scope, $http, $state, EventsService, SERVER, $stateParams, $window) {
 
      var vm = this;
-     var id = $stateParams.id;
+     var eid = $stateParams.id;
+     var endpoint = SERVER.URL;
+     var Config = {params: {apiKey: SERVER.CONFIG.apiKey}};
+
+
 
 //Post EVENTS
-      $scope.postEvent = function (options)
+      $scope.postEvent = function (id)
       {
-        EventsService.postEvent(options);
-        console.log('Posted to /events and got back:', options);
+        EventsService.postEvent(id);
+        console.log('Posted to /events and got back:', id);
       };
 
 
@@ -32,28 +36,30 @@
 
 //Get a single _ID
 
-      $scope.getSingleId = function(id)
+      $scope.getById = function(id)
       {
-        EventsService.getSingleId(id).then(function(data)
+        EventsService.getById(id).then(function(option)
         {
-          $scope.option = data;
+          $scope.option = option;
         });
       };
 
+
+
 //Put EVENTS
-      $scope.editEvent = function(option)
+      $scope.editEvent = function(eid)
       {
-        EventsService.editEvent(option);
+        EventsService.editEvent(eid);
       };
 
 
 //Delete Event
-      $scope.deleteEvent = function(id)
+      $scope.deleteEvent = function(eid)
       {
         var ckDelete = $window.confirm('Are you sure you want to delete this event?');
         if(ckDelete)
         {
-          EventsService.deleteEvent(id);
+          EventsService.deleteEvent(eid);
         }
       };
 

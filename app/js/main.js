@@ -10,7 +10,7 @@
       URL: "https://api.mlab.com/api/1/databases/almostfamousatl/collections",
       CONFIG:{
           apiKey:'ZV5Qc-g5yNbRuU15JzBfdYGGEbrpMS_c',
-          contentType: 'application/json'
+          ContentType: 'application/json'
       }
     });
 
